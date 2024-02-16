@@ -1,0 +1,116 @@
+ <!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+
+    <base #href="" />
+
+	<!-- Basic Page Needs
+     ================================================== -->
+	 <meta charset="utf-8">
+	 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <title>{{tittle}}</title>
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+
+	 
+	 <!-- Mobile Specific Metas
+     ================================================== -->
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+     <meta name="format-detection" content="telephone=no">
+	 
+     
+	 
+     <!-- Favicons
+     ================================================== -->
+     <link rel="icon" type="image/png" href="/static/images/favicon.png">
+     
+	 
+     <!-- Fonts
+     ================================================== -->
+     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+     
+    <!-- CSS
+     ================================================== -->
+	
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+
+	<!-- advisor -->
+	<link rel="stylesheet" href="/static/css/advisor.css">
+
+	<!-- plugins -->
+	<link rel="stylesheet" href="/static/css/plugins.css">	
+
+	<!-- advisor color -->
+	<link rel="stylesheet" id="color" href="/static/css/color-default.css">
+
+	<!-- revolution slider -->
+	<link rel="stylesheet" href="/static/css/settings.css">
+	
+	<!-- responsive -->
+	<link rel="stylesheet" href="/static/css/responsive.css">
+
+    
+	<script src="/static/js/modernizr.js"></script>
+	
+	
+</head>
+    <body class="fixed-header two">
+
+       {{>header}}
+
+
+	   <div  style="margin-top: 100px;">
+    <h2 style="text-align: center;">Login</h2><hr>
+    <form   action="/admin" method="post" style="text-align: center;">
+        <label for="username">Email:</label><br>
+        <input type="text" id="username" name="email"  placeholder="Email" style="width: 400px;" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="Password" style="width: 400px;" required><br>
+
+        <button  style="margin-bottom: 30px;" class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <hr>
+</div>
+        
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ {{>footer}}
+
+<!-- FOOTER SCRIPTS
+		================================================== -->
+		<script src="/static/js/jquery-2.2.0.js"></script>
+		<script src="/static/js/smooth-scroll.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/counter.js"></script>
+		<script src="/static/js/common.js"></script>
+		<script src="/static/js/jquery.themepunch.plugins.min.js"></script>
+		<script src="/static/js/jquery.themepunch.revolution.min.js"></script>
+		<script src="/static/js/scripts.js"></script>
+        <script src="/static/js/banner.js"></script>
+
+		
+		
+		
+		<!-- DEMO -->
+		<script src="/static/demo-files/js/jquery.cookie.js"></script>
+		<script src="/static/demo-files/js/switcher.js"></script>
+		
+		
+
+    </body>
+
+</html>

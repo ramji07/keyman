@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="admin.css"> -->
+    <!-- Custom styles -->
+    <style>
+        body {
+            padding-top: 56px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/home">Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/home"><i class="fas fa-home"></i> Dashboard</a>
+            </li>
+         
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container-fluid ">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar" >
+            <div class="sidebar-sticky">
+                <img src="/static/images/footer-logo.png"alt="admin-logo">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active mt-4  text-dark" href="/admin/home">
+                            <i class="fa-solid fa-house"></i> Home
+                         </a>
+                    </li>
+                  
+                    <li class="nav-item">
+                        <a class="nav-link active mt-4  text-dark" href="/admin/contact-data">
+                            <i class="fas fa-chart-bar"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mt-4 text-dark" href="/admin/call-request">
+                            <i class="fas fa-users"></i> Call Request 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mt-4 text-dark" href="/admin/newsletter">
+                            <i class="fas fa-file"></i> NewsLetter
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mt-4 text-dark" href="/admin/addUsers">
+                            <i class="fa-solid fa-user"></i> Add Admins
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mt-4 text-dark" href="/admin/addLogos">
+                            <i class="fas fa-file"></i> Add Logos
+                        </a>
+                    </li>
+                    <li class="nav-item mt-5">
+                        {{!-- ramjee --}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+            </div>
+        
+              
+<div class="container mt-4">
+    <h2>Contacts</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Services</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data -->
+            {{#each calldata}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{phone}}</td>
+                <td>{{select}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="deleteContact(this)">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                    <button class="btn btn-info btn-sm ml-2" data-toggle="modal" data-target="#updateModal" onclick="openUpdateModal(this)">
+                        <i class="fas fa-edit"></i> Update
+                    </button>
+                </td>
+            </tr>
+            {{/each}}
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+</main>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for updating data -->
+                <form id="updateForm">
+                    <div class="form-group">
+                        <label for="updateName">Name:</label>
+                        <input type="text" class="form-control" id="updateName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateEmail">Email:</label>
+                        <input type="email" class="form-control" id="updateEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="updatePhone">Phone:</label>
+                        <input type="tel" class="form-control" id="updatePhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateMessage">Message:</label>
+                        <textarea class="form-control" id="updateMessage" rows="3" required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="updateData()">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- admin footer  -->
+
+  <!-- Footer -->
+
+  <div class="container-fluid mt-5">
+                <footer class="bg-body-tertiary text-center">
+            
+            
+                            <!-- Copyright -->
+                            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                            © 2024 Copyright:
+                            <a class="text-reset fw-bold">Advisor</a>
+                            </div>
+                    <!-- Copyright -->
+                </footer>
+                <!-- Footer -->
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+     function deleteContact(button) {
+        // Implement your delete functionality here
+        // You can access the row and delete the corresponding data
+        var row = button.closest('tr');
+        row.remove();
+    }
+
+    function openUpdateModal(button) {
+        // Populate the modal with existing data
+        var row = button.closest('tr');
+        var cells = row.getElementsByTagName('td');
+        document.getElementById('updateName').value = cells[0].innerText;
+        document.getElementById('updateEmail').value = cells[1].innerText;
+        document.getElementById('updatePhone').value = cells[2].innerText;
+        document.getElementById('updateMessage').value = cells[3].innerText;
+    }
+
+    function updateData() {
+        // Implement your update functionality here
+        // You can access the form data and update the corresponding row
+        alert("Update functionality to be implemented");
+        // Close the modal after updating
+        $('#updateModal').modal('hide');
+    }
+</script>
+<!-- font  -->
+<script src="https://kit.fontawesome.com/1d4b7f2684.js" crossorigin="anonymous"></script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

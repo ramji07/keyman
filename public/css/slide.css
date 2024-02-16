@@ -1,0 +1,18 @@
+.over-text{
+    position: absolute;
+    font-size:70px;
+    font-weight: 600;
+    margin-top: 200px;
+    color: white;
+    text-align: center;
+    margin-left: 330px;
+    
+}
+.over-btn{
+    position:absolute;
+    top: 68%;
+    left: 45%;
+    bottom: 50%;
+    color: black;
+
+}
